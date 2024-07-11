@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  //https://www.html-color-codes.info/
+  margin: 0px !important;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+ 
+  //display: flex;
+  background-color: #effbef;
+  // background-image: url(../src/app/assets/bg.jpg);
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: center;
+
+  /* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
+  /** {
+  scrollbar-width: thin;
+  scrollbar-color: #397524 #DFE9EB;
+}*/
+
+  //https://www.cssportal.com/css-scrollbar-generator/
+  /* Chrome, Edge and Safari */
+  /* Firefox (uncomment to work in Firefox, although other properties will not work!)  */
+  /** {
+  scrollbar-width: thin;
+  scrollbar-color: #6F9071 #EBEBEB;
+}*/
+
+  /* Chrome, Edge and Safari */
+  *::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: #ebebeb;
+  }
+
+  *::-webkit-scrollbar-track:hover {
+    background-color: #e3e3e3;
+  }
+
+  *::-webkit-scrollbar-track:active {
+    background-color: #e3e3e3;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #abb4ab;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: #98a098;
+  }
+
+  *::-webkit-scrollbar-thumb:active {
+    background-color: #abb4ab;
+  }
+}

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="header-container">
+    <i
+      class="fa-solid fa-circle-chevron-left"
+      (click)="togglePanel()"
+      [ngClass]="{ 'open': isPanelOpen }"
+    ></i>
+  </div>
+</div>
+<div>
+  <div
+  [ngClass]="{'closed': !isPanelOpen, 'panel-expand': isPanelOpen}"
+  *ngIf="isPanelOpen"
+>
+  <div class="panel-header">
+    <label>Index</label>
+    <i class="fa-solid fa-circle-plus" tabindex="0" (click)="onAddClick()"></i>
+  </div>
+
+  <div class="list" *ngFor="let recipe of recipeArray" (click)="onIngredientClick(recipe[0])">
+    {{recipe[1]}}
+   </div>
+</div>
+
+<div class="right">
+  <app-recipe-details tabindex="0" [recipeFormGroup]="formGroup"></app-recipe-details>
+</div>
+</div>
+

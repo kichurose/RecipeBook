@@ -1,0 +1,114 @@
+.cdk-drag-preview {
+  overflow: hidden;
+  border-radius: 5px;
+  input {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 2px solid transparent;
+    //  margin-top: 10px;
+    height: 25px;
+
+    min-width: 100%;
+  }
+}
+
+:host {
+  .main-container {
+    label {
+      padding-right: 10px;
+    }
+    height: 100vh;
+    margin: 80px;
+    .header-container {
+      display: flex;
+      span {
+        flex: 1;
+      }
+      button {
+        background-color: rgba(51, 51, 51, 0.05);
+        border-radius: 8px;
+        border-width: 0;
+        background-color: #bfc8bf;
+        cursor: pointer;
+        // display: inline-block;
+
+        margin: 0;
+        padding: 10px 12px;
+
+        white-space: nowrap;
+      }
+    }
+
+    input {
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+      border-bottom: 2px solid transparent;
+      //  margin-top: 10px;
+      height: 25px;
+      border-radius: 5px;
+      //min-width: 100%;
+    }
+
+    :focus {
+      outline: none; /* Removes the default outline */
+    }
+
+    //https://stripesgenerator.com/
+    //background-image: linear-gradient(0deg, #e8e8e8 45.45%, #4dadf9 45.45%, #4dadf9 50%, #e8e8e8 50%, #e8e8e8 95.45%, #4dadf9 95.45%, #4dadf9 100%);
+    //background-size: 44.00px 44.00px;
+
+    .container {
+      margin-top: 20px;
+      width: 100%;
+      height: 500px;
+      display: flex;
+      max-height: 100%;
+      .left-container {
+        flex: 1;
+        .icon-class {
+          display: flex;
+          i {
+            font-size: 24px;
+          }
+          i:first-child {
+            flex: 1;
+          }
+        }
+        background-color: #e5e4e2;
+        border-radius: 10px;
+        min-width: 30%;
+        padding: 20px;
+        overflow-y: auto;
+
+        .drag-card {
+          margin-top: 10px;
+          input {
+            min-width: 100%;
+          }
+        }
+
+        .cdk-drag-placeholder {
+          opacity: 0;
+        }
+      }
+
+      .right-container {
+        padding-left: 20px;
+        min-width: 60%;
+        //height: 100%;
+        textarea {
+          line-height: 1.4;
+          font-size: 16px;
+          //padding: 10px;
+          border-radius: 10px;
+          border: none;
+          width: 100%;
+          height: 100%;
+          resize: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+<div class="main-container" [formGroup]="recipeFormGroup">
+  <form>
+    <p>{{recipeFormGroup.value | json}}</p>
+    <div class="header-container">
+      <span>
+        <label>Dish Name</label>
+        <input type="text" formControlName="name" [value]="name" /><br />
+      </span>
+     
+      <button type="button" (click)="onAddClick()">Add Recipe</button><br />
+    </div>
+    <!-- <hr/> -->
+    <div class="container">
+      <div
+        formArrayName="ingredients"
+        class="left-container"
+       
+        cdkDropList
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="icon-class">
+          <i class="fa-solid fa-utensils"></i>
+          <i class="fa-solid fa-circle-plus" tabindex="0" (click)="addIngredient()" (keydown.enter)="addIngredient()"></i>
+        </div>
+        <div
+          class="drag-card"
+          *ngFor="let ingredient of ingredients.controls; let i = index"
+          cdkDrag
+          cdkDragBoundary=".left-container"
+        >
+          <div [formGroupName]="i">
+            <input
+              type="text"
+              formControlName="ingredient"
+              [value]="ingredientName"
+              
+            />
+            <!-- <input type="text" formControlName="amount" [value]="amount"/> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="right-container">
+        <!-- <label>Direction to cook</label><br /> -->
+        <textarea
+          formControlName="instructions"
+          [value]="instructions"
+        ></textarea>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- <div class="boundary" style="position: relative; width: 300px; border: 1px solid black;">
+  <div cdkDropList (cdkDropListDropped)="drop($event)">
+    <div cdkDrag cdkDragBoundary=".boundary" class="drag">{{item1}}</div>
+    <div cdkDrag cdkDragBoundary=".boundary" class="drag">{{item2}}</div>
+  </div>
+</div> -->
