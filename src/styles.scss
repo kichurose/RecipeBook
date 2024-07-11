@@ -1,11 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+/* styles.scss */
+.cdk-overlay-backdrop.cdk-overlay-dark-backdrop {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.7
+  ) !important; /* Use !important to ensure the rule is applied */
+  //pointer-events: none !important; /* Makes the backdrop unclickable */
+  position: fixed; /* Ensure it covers the entire screen */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
 body {
   //https://www.html-color-codes.info/
   margin: 0px !important;
   font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
     sans-serif;
- 
+
   //display: flex;
   background-color: #effbef;
   // background-image: url(../src/app/assets/bg.jpg);

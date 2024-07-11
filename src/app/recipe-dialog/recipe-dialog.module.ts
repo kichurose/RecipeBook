@@ -6,13 +6,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { RecipeDialogComponent } from './recipe-dialog.ctrl';
 import { RecipeDetailsModule } from '../recipe-details/recipe-details.module';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { RecipeIndexModule } from '../recipe-index/recipe-index.module';
 
 @NgModule({
   declarations: [RecipeDialogComponent],
   imports: [
     CommonModule, 
     ReactiveFormsModule,
-    RecipeDetailsModule
+    RecipeDetailsModule,
+    OverlayModule,
+    RecipeIndexModule
   ],
   exports: [RecipeDialogComponent],
   providers: [RecipeService],

@@ -1,7 +1,11 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Recipe, RecipeService } from '../services/recipe.service';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CdkDragDrop, CdkDragMove, moveItemInArray } from '@angular/cdk/drag-drop';
+import {
+  CdkDragDrop,
+  CdkDragMove,
+  moveItemInArray,
+} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-recipe-details',
@@ -16,8 +20,6 @@ export class RecipeDetailsComponent {
   public item2: string = 'Item2';
 
   public ingredientsArray: string[] = [];
-
-
 
   public get name(): string {
     return this.recipeFormGroup.get('name')?.value;
@@ -50,8 +52,7 @@ export class RecipeDetailsComponent {
   }
 
   ngOnInit(): void {
-    debugger;
-console.log(this.recipeFormGroup)
+    //this.ingredientFormGroup.patchValue({});
   }
 
   addIngredient(): void {
@@ -85,12 +86,11 @@ console.log(this.recipeFormGroup)
     );
   }
 
- 
-
-
-
   public drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.ingredients.controls, event.previousIndex, event.currentIndex);
-  
+    moveItemInArray(
+      this.ingredients.controls,
+      event.previousIndex,
+      event.currentIndex
+    );
   }
 }

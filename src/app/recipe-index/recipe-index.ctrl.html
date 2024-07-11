@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="panel-header">
+    <label>Index</label>
+  </div>
+
+  <div
+    class="list"
+    *ngFor="let recipe of recipeArray"
+    (click)="onIngredientClick(recipe[0])"
+  >
+    {{recipe[1]}}
+  </div>
+</div>
