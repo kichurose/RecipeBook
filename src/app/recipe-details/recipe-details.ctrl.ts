@@ -64,7 +64,9 @@ export class RecipeDetailsComponent {
     this.ingredients.push(ingredientForm);
   }
 
-  public onAddClick() {
+  
+
+  public onAddClick(): void {
     this.ingredients.controls.forEach((element) => {
       this.ingredientsArray.push(element.value['ingredient']);
     });

@@ -9,6 +9,8 @@ import { Recipe, RecipeService } from '../services/recipe.service';
 export class RecipeIndexComponent {
   @Output()
   public onItemClick: EventEmitter<string> = new EventEmitter<string>();
+  @Output()
+  public onCloseClick: EventEmitter<void> = new EventEmitter<void>();
   recipeArray: string[][] = [];
   public recipeDict: Map<string, string> = new Map<string, string>();
   constructor(private recipeService: RecipeService) {}
@@ -27,5 +29,22 @@ export class RecipeIndexComponent {
 
   public onIngredientClick(id: string): void {
     this.onItemClick.emit(id);
+  }
+
+  public onCloseClicked(): void {
+    this.onCloseClick.emit();
+  }
+  public onDeleteClicked(id: string, index: number) : void {
+    this.recipeService.deleteRecipe(id)
+    .subscribe(
+      response => {
+        this.recipeArray.splice(index, 1);
+
+        console.log('Recipe deleted successfully', response);
+      },
+      error => {
+        console.error('Error deleting recipe', error);
+      }
+    );
   }
 }

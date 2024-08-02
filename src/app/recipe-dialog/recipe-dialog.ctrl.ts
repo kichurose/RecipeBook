@@ -16,7 +16,6 @@ export class RecipeDialogComponent {
   isPanelOpen = false;
 
   public recipes: string[] = [];
-  public isAddItem: boolean = false;
 
   constructor(
     private recipeService: RecipeService,
@@ -59,27 +58,34 @@ export class RecipeDialogComponent {
       panelClass: 'custom-overlay-panel',
     });
     this.overlayRef = overlayConfig;
-    if (!this.isPanelOpen) {
+    
       this.isPanelOpen = !this.isPanelOpen;
       const portal = new ComponentPortal(RecipeIndexComponent);
       const componentRef = this.overlayRef.attach(portal);
       componentRef.instance.onItemClick.subscribe((data) => {
         this.onIngredientClick(data);
         this.overlayRef.dispose();
-        this.isPanelOpen = !this.isPanelOpen;
+        //this.isPanelOpen = !this.isPanelOpen;
       });
-    } else {
-      this.overlayRef.dispose();
-      this.isPanelOpen = !this.isPanelOpen;
-    }
+      componentRef.instance.onCloseClick.subscribe(() => {
+        this.overlayRef.dispose();
+        //this.isPanelOpen = !this.isPanelOpen;
+      });
+
+      this.overlayRef.backdropClick().subscribe(() => {
+        this.overlayRef.dispose();
+      
+      });
+    
   }
 
   public onAddClick() {
+    let ingredients = this.formGroup.get('ingredients') as FormArray;
+    ingredients.clear();
     this.formGroup.reset({
       name: '',
-      ingredients: this.formBuilder.array(['']),
+      ingredients: this.formBuilder.array([]),
       instructions: '',
     });
-    this.isAddItem = true;
   }
 }

@@ -28,4 +28,8 @@ export class RecipeService {
   addRecipe(recipe: Recipe): Observable<Recipe> {
     return this.httpClient.post<Recipe>(this.apiUrl, recipe);
   }
+
+  deleteRecipe(id: string){
+    return this.httpClient.delete<Recipe>(this.apiUrl+`/${id}`);
+  }
 }
