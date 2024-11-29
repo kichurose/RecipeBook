@@ -52,29 +52,43 @@ export class RecipeDialogComponent {
   }
 
   togglePanel() {
-    const overlayConfig = this.overlay.create({
+    // Define a position strategy for a fixed side panel
+    const positionStrategy = this.overlay.position()
+      .global()
+      .right('0') // Align to the right edge
+      .top('0'); // Align to the top edge
+
+    this.overlayRef = this.overlay.create({
       hasBackdrop: true,
       backdropClass: 'cdk-overlay-dark-backdrop',
       panelClass: 'custom-overlay-panel',
+      positionStrategy,
+      width: '300px', // Optional: Set a fixed width
+      height: '100vh', // Optional: Full height
     });
-    this.overlayRef = overlayConfig;
+
+  // Immediately trigger the sliding animation by setting the right property
+  const panel = document.querySelector('.custom-overlay-panel') as HTMLElement; // Cast to HTMLElement
+  if (panel) {
+    panel.style.right = '0';  // Slide in immediately
+  }
     
       this.isPanelOpen = !this.isPanelOpen;
       const portal = new ComponentPortal(RecipeIndexComponent);
       const componentRef = this.overlayRef.attach(portal);
       componentRef.instance.onItemClick.subscribe((data) => {
         this.onIngredientClick(data);
+        this.overlayRef.detach();
         this.overlayRef.dispose();
-        //this.isPanelOpen = !this.isPanelOpen;
       });
       componentRef.instance.onCloseClick.subscribe(() => {
+        this.overlayRef.detach();
         this.overlayRef.dispose();
-        //this.isPanelOpen = !this.isPanelOpen;
       });
 
       this.overlayRef.backdropClick().subscribe(() => {
+        this.overlayRef.detach();
         this.overlayRef.dispose();
-      
       });
     
   }
